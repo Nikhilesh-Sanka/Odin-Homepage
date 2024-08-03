@@ -11,6 +11,9 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   width: min(500px, 50vw);
+  --rotate-var: -90deg;
+  animation: welcome 4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: backwards;
 }
 .about-me h2 {
   margin-bottom: 10px;
@@ -32,6 +35,9 @@ header > img {
   justify-self: flex-end;
   position: relative;
   right: -30px;
+  --rotate-var: 90deg;
+  animation: welcome 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: backwards;
 }
 main h2 {
   text-align: center;
@@ -94,3 +100,28 @@ footer {
 footer > p {
   margin-bottom: 10px;
 }
+
+/* Animations */
+@keyframes rotate-and-enter {
+  0% {
+    transform: rotate(60deg) translateX(1500px);
+  }
+  100% {
+    transform: rotate(0) translateX(0);
+  }
+}
+@keyframes welcome {
+  0% {
+    transform-origin: 0% 0%;
+    transform: rotate(var(--rotate-var));
+  }
+  100% {
+    transform-origin: 0% 0%;
+    transform: rotate(0);
+  }
+}
+.rotate-and-enter {
+  animation: rotate-and-enter 1s ease-out;
+  animation-fill-mode: both;
+}
+/* Animations */
